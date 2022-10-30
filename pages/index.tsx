@@ -1,12 +1,10 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from "../styles/Home.module.css";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
 
 const Home: NextPage = () => {
-  return (
-    <div>hi</div>
-  )
-}
+  return <div>Linkuni with Next.js</div>;
+};
 
-export default Home
+export default Home;

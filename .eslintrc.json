@@ -21,10 +21,10 @@
   "plugins": ["@typescript-eslint"],
   "ignorePatterns": ["next.config.js"],
   "rules": {
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/no-empty-function": "warn",
+    "@typescript-eslint/no-empty-interface": "off", // empty interface is allowed
+    "@typescript-eslint/no-empty-function": "warn", // empty function warning
     "@typescript-eslint/promise-function-async": "warn",
-    "@typescript-eslint/prefer-nullish-coalescing": "warn",
-    "@typescript-eslint/await-thenable": "error"
+    "@typescript-eslint/prefer-nullish-coalescing": "warn", // avoid || and use ?? 
+    "@typescript-eslint/await-thenable": "error" // error when the func is not async
   }
 }
