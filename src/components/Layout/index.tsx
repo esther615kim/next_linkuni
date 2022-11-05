@@ -1,3 +1,4 @@
+import { HeartIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import { useState } from "react";
 
@@ -17,22 +18,31 @@ Props) {
   const [user, setUser] = useState<string | null>(null);
 
   // use Button component
-  const logInBtn = <button>Login</button>;
-
+  const logInBtn = (
+    <button>
+      <UserCircleIcon className="w-6 h-6 text-white" />
+    </button>
+  );
   const logOutBtn = <button>LogOut</button>;
 
-  console.log("user", user);
+  const FavListBtn = (
+    <button>
+      <HeartIcon className="w-6 h-6 mr-4 text-white" />
+    </button>
+  );
+
   return (
     <div
-      className="p-2 bg-white dark:bg-slate-900 text-slate-900 dark:text-white"
-      //   {...styleProps}
+
+    //   {...styleProps}
     >
       <Head>{title}</Head>
       {/* TOP NAV */}
-      <div className="p-2 shadow-md bg-slate-900 dark:bg-white text-slate-900 dark:text-white">
+      <div className="flex justify-end p-4 text-white shadow-md bg-slate-900 dark:bg-white dark:text-slate-900">
+        {FavListBtn}
         {user ? logOutBtn : logInBtn}
       </div>
-      {children}
+      <div className="flex flex-col items-center">{children}</div>
     </div>
   );
 };
