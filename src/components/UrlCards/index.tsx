@@ -13,7 +13,7 @@ export const UrlCards = function ({ cardsData }: Props) {
         {cardsData[0].category.toUpperCase()}
       </h3>
       {/* CARD */}
-      <ul className="flex overflow-x-scroll flex-nowrap">
+      <ul className="flex overflow-x-scroll md:overflow-x-hidden flex-nowrap">
         {cardsData.map((card) => (
           <SingleCard key={card.id} cardData={card} />
         ))}
