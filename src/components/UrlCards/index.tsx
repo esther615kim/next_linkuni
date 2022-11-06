@@ -18,6 +18,12 @@ export const UrlCards = function ({ cardsData }: Props) {
           <SingleCard key={card.id} cardData={card} />
         ))}
       </div>
+      {/* CARD */}
+      <div className="flex overflow-x-auto">
+        {cardsData.map((card) => (
+          <SingleCard key={card.id} cardData={card} />
+        ))}
+      </div>
     </div>
   );
 };
