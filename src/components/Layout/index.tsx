@@ -1,3 +1,4 @@
+import Button from "../common/Button";
 import { HeartIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import { useState } from "react";
@@ -19,21 +20,21 @@ Props) {
 
   // use Button component
   const logInBtn = (
-    <button>
+    // IconButton으로 쪼갤 방법은..
+    <Button handleButtonClick={() => console.log("login!")}>
       <UserCircleIcon className="w-6 h-6 text-white" />
-    </button>
+    </Button>
   );
   const logOutBtn = <button>LogOut</button>;
 
   const FavListBtn = (
-    <button>
+    <Button handleButtonClick={() => console.log("fav list")}>
       <HeartIcon className="w-6 h-6 mr-4 text-white" />
-    </button>
+    </Button>
   );
 
   return (
     <div
-
     //   {...styleProps}
     >
       <Head>{title}</Head>

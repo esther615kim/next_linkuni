@@ -10,14 +10,8 @@ export const UrlCards = function ({ cardsData }: Props) {
   return (
     <div className="w-full p-5 bg-gray-100">
       <h3 className="pl-2 text-lg font-bold align-left">
-        {cardsData[0].category}
+        {cardsData[0].category.toUpperCase()}
       </h3>
-      {/* CARD */}
-      <div className="flex overflow-x-auto">
-        {cardsData.map((card) => (
-          <SingleCard key={card.id} cardData={card} />
-        ))}
-      </div>
       {/* CARD */}
       <div className="flex overflow-x-auto">
         {cardsData.map((card) => (

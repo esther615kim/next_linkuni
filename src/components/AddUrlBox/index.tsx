@@ -11,7 +11,7 @@ export const AddUrlBox = function () {
   return (
     <>
       <Button handleButtonClick={handleBtnClick}>
-        <PencilSquareIcon className="icon-primary" />
+        <PencilSquareIcon className="bg-indigo-500 icon-primary hover:bg-indigo-400" />
       </Button>
     </>
   );

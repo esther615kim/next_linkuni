@@ -5,10 +5,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({ children, handleButtonClick }: ButtonProps) => {
   return (
-    <button className="p-2" onClick={handleButtonClick}>
+    <button className="p-1 m-1" onClick={handleButtonClick}>
       {children}
     </button>
-  ); // 기본적인 style을 주고 나서 props 로 addtional 하게 받는 건? keyima?
+  ); // 기본적인 style을 주고 나서 props 로 addtional 하게 받는 건?
 };
 
 export default Button;

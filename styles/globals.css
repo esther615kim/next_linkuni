@@ -4,7 +4,7 @@
 
 @layer components {
     .icon-primary {
-      @apply w-10 h-10 p-2 text-white bg-indigo-500 btn-primary hover:bg-indigo-400
+      @apply rounded w-10 h-10 p-2 text-white
     }
     .btn-primary{
         @apply p-2 m-5 rounded-md shadow-lg
