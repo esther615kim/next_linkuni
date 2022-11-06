@@ -1,7 +1,7 @@
 import { AddUrlBox } from "../src/components/AddUrlBox";
 import { Layout } from "../src/components/Layout";
 import { UrlCards } from "../src/components/UrlCards";
-import { url_card_data_1, url_card_data_2 } from "../src/data/mockData";
+import { URLCARDDATA2, URLCARDDATA1 } from "../src/data/mockData";
 // add it to firebase & apis
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -17,8 +17,8 @@ const Home: NextPage = () => {
       {/* ADD BUTTON */}
       <AddUrlBox />
       {/* URL CARDS */}
-      <UrlCards cardsData={url_card_data_1} />
-      <UrlCards cardsData={url_card_data_2} />
+      <UrlCards cardsData={URLCARDDATA1} />
+      <UrlCards cardsData={URLCARDDATA2} />
     </Layout>
   );
 };

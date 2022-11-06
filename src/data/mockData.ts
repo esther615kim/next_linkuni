@@ -9,7 +9,7 @@ export type UrlCardData = {
 }
 
 
-export const url_card_data_1: UrlCardData[] = [
+export const URLCARDDATA1: UrlCardData[] = [
 {id:"3",
 category:"FE",
 title:"Tailwind CSS dark mode",
@@ -38,7 +38,7 @@ url:"https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually",
 
 ]
 
-export const url_card_data_2: UrlCardData[] = [
+export const URLCARDDATA2: UrlCardData[] = [
     {id:"1",
     category:"recipe",
     title:"파는 떡볶이 맛의 진수",

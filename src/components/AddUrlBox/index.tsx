@@ -10,7 +10,7 @@ export const AddUrlBox = function () {
 
   return (
     <>
-      <Button handleButtonClick={handleBtnClick}>
+      <Button onClick={handleBtnClick}>
         <PencilSquareIcon className="bg-indigo-500 icon-primary hover:bg-indigo-400" />
       </Button>
     </>

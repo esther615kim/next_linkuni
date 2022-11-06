@@ -13,11 +13,11 @@ export const UrlCards = function ({ cardsData }: Props) {
         {cardsData[0].category.toUpperCase()}
       </h3>
       {/* CARD */}
-      <div className="flex overflow-x-auto">
+      <ul className="flex overflow-x-scroll flex-nowrap">
         {cardsData.map((card) => (
           <SingleCard key={card.id} cardData={card} />
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

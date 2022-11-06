@@ -21,14 +21,14 @@ Props) {
   // use Button component
   const logInBtn = (
     // IconButton으로 쪼갤 방법은..
-    <Button handleButtonClick={() => console.log("login!")}>
+    <Button onClick={() => console.log("login!")}>
       <UserCircleIcon className="w-6 h-6 text-white" />
     </Button>
   );
   const logOutBtn = <button>LogOut</button>;
 
   const FavListBtn = (
-    <Button handleButtonClick={() => console.log("fav list")}>
+    <Button onClick={() => console.log("fav list")}>
       <HeartIcon className="w-6 h-6 mr-4 text-white" />
     </Button>
   );

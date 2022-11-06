@@ -7,7 +7,8 @@ type Props = {
 
 const SingleCard = ({ cardData }: Props) => {
   return (
-    <div className="w-40 pt-2 m-1 bg-white rounded-lg shadow-md md:w-60 hover:shadow-gray-400 sm:pt-5 md:m-2 dark:bg-slate-800 ring-slate-900/5">
+    // todo: card width - fixed
+    <li className="pt-2 m-1 bg-white rounded-lg shadow-md w-60 min-w-60 hover:shadow-gray-400 sm:pt-5 md:m-2 dark:bg-slate-800">
       <Link href={cardData.url}>
         <div className="p-1 pt-5 md:p-1">
           <h3 className="h-10 mt-2 overflow-hidden text-sm tracking-tight font-meSdium text-slate-900 dark:text-white">
@@ -20,7 +21,7 @@ const SingleCard = ({ cardData }: Props) => {
       </Link>
       {/* ICONS */}
       <div className="flex justify-end px-1 mt-2 bg-slate-100">Icons</div>
-    </div>
+    </li>
   );
 };
 

@@ -1,24 +1,26 @@
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode; // any better type?
-  handleButtonClick: () => void;
-}
+// interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+//   children: React.ReactNode; // any better type?
+//   handleButtonClick: () => void;
+// }
+// const Button = ({ children, handleButtonClick }: ButtonProps) => {
+//   return (
+//     <button className="p-1 m-1" onClick={handleButtonClick}>
+//       {children}
+//     </button>
+//   );
+// };
+// export default Button;
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
-const Button = ({ children, handleButtonClick }: ButtonProps) => {
-  return (
-    <button className="p-1 m-1" onClick={handleButtonClick}>
-      {children}
-    </button>
-  ); // 기본적인 style을 주고 나서 props 로 addtional 하게 받는 건?
+//  type 임포트
+
+type TProps = {
+  //   color: string;
+  children: ReactNode;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button = ({ children, ...additionalProps }: TProps) => {
+  return <button {...additionalProps}>{children}</button>;
 };
 
 export default Button;
-
-// interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-//     additionalProps?: string;
-//   }
-
-// const Button = ({ children, ...additionalProps }: ButtonProps) => {
-//   return <button {...additionalProps}>{children}</button>; // 기본적인 style을 주고 나서 props 로 addtional 하게 받는 건?
-// };
-
-// export default Button;
