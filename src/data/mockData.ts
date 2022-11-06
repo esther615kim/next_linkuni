@@ -30,6 +30,11 @@ category:"cat",
 title:"One of the best cats of my 18 year groomer career !!",
 url:"https://youtu.be/61Y0-SdPoTk",
 },
+{id:"3",
+category:"FE",
+title:"Tailwind CSS dark mode",
+url:"https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually",
+},
 
 ]
 
