@@ -1,4 +1,4 @@
-type UrlCardData = {
+export type UrlCardData = {
     id:string,
     category:string,
     title:string,

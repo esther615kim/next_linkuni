@@ -24,13 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 `Setting`
 -Tailwind CSS
+-add heroicons
 
 -
--
 
-## `Removed`
+## `Added`
 
--
+- AddUrlBox component
 -
 
 ### [0.0.1] - 23/Oct/2022
