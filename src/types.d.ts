@@ -1,4 +1,4 @@
-export type InputProps = {
+type InputProps = {
     name:string
     type: string;
     placeholder?: string;
@@ -6,8 +6,7 @@ export type InputProps = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
-  
-export type Inputs = {
+ type Inputs = {
     link:string
     title: string;
     category: null | string[];
@@ -15,6 +14,9 @@ export type Inputs = {
     memo: string;
   };
 
-export type EventProps = React.ChangeEvent<HTMLInputElement>;
+// combine event types
+ type EventProps = React.ChangeEvent<HTMLInputElement>;
+ type EventBtnProps = React.MouseEvent<HTMLButtonElement>;
 
-//  한꺼번에 export 하기
+
+ export {InputProps,Inputs,EventBtnProps,EventProps}

@@ -1,3 +1,4 @@
+import { EventBtnProps, EventProps, Inputs } from "../../types";
 import Button from "../common/Button";
 import { FormInput } from "../common/FormInput";
 import {
@@ -7,28 +8,18 @@ import {
 } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 
-type Inputs = {
-  link: string;
-  title: string;
-  category: null | string[];
-  tags?: null | string[];
-  memo: string;
+const initialValues = {
+  title: "",
+  link: "",
+  category: null,
+  tags: null,
+  memo: "",
 };
-type EventProps = React.ChangeEvent<HTMLInputElement>;
 
 export const LinkForm = () => {
-  const [values, setInputValues] = useState<Inputs>({
-    title: "",
-    link: "",
-    category: null,
-    tags: null,
-    memo: "",
-  });
-  const [isError, setIsError] = useState(false);
+  const [values, setInputValues] = useState<Inputs>(initialValues);
+  const [boxMessage, setBoxMessage] = useState<null | string>(null);
 
-  // const handleSubmit = (e: EventProps) => {
-  //   e.preventDefault();
-  // };
   const onChange = (e: EventProps) => {
     console.log("name", e.target.name, "value", e.target.value);
     setInputValues({
@@ -36,18 +27,24 @@ export const LinkForm = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handleSaveLink = (e) => {
+  const handleSaveLink = (e: EventBtnProps) => {
     e.preventDefault();
-    if (Object.values(values).includes("" || null)) {
+    if (values.link === "") {
       // ADD ERROR MESSAGE
-      setIsError((prev) => true); //??
+      setBoxMessage("Complete the required fields."); // setBoxMessage((prev) => "Complete the required fields.");
       return;
     }
     console.log("save", values);
+    setBoxMessage("It has saved successfully!");
+  };
+
+  const handleClearInputs = (e: EventBtnProps) => {
+    e.preventDefault();
+    setInputValues(initialValues);
   };
 
   useEffect(() => {
-    setIsError(false);
+    setBoxMessage("");
   }, []);
   return (
     <div>
@@ -56,6 +53,7 @@ export const LinkForm = () => {
           <PaperClipIcon className="text-indigo-500 m-1 w-5 h-5" />
           <h3 className="font-semibold text-lg text-slate-600">Add Link</h3>
         </div>
+
         {/* INPUTS*/}
         <form className="py-1">
           <FormInput
@@ -73,27 +71,29 @@ export const LinkForm = () => {
           />
           {/* CATEGORY */}
           {/* TAG */}
+
           <FormInput
             name="memo"
             type="text"
             value={values.memo}
             onChange={onChange}
           />
-          {/* ERROR MESSAGE */}
+
+          {/* MESSAGE BOX */}
           <div className="h-8 md:px-4 relative text-center">
-            {isError && (
+            {boxMessage && (
               <h3 className="absolute top-2 left-2 text-red-400">
-                Complete the required fields.
+                {boxMessage}
               </h3>
             )}
           </div>
 
           {/* BUTTONS */}
           <div className="my-6 flex justify-between">
-            <Button onClick={() => console.log("nope")}>
+            <Button onClick={handleClearInputs}>
               <div className="btn-inner-div bg-yellow-200 hover:bg-yellow-300 text-gray-800">
                 {/* <NoSymbolIcon className="m-0.5 w-5 h-5 " /> */}
-                <p className="w-14">CANCEL</p>
+                <p className="w-14">CLEAR</p>
               </div>
             </Button>
             <Button onClick={handleSaveLink}>
