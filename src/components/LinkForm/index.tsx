@@ -1,6 +1,7 @@
 import { EventBtnProps, EventProps, Inputs } from "../../types";
 import Button from "../common/Button";
 import { FormInput } from "../common/FormInput";
+import { FormOptionInput } from "../common/FormInput/FormOptionInput";
 import {
   PaperClipIcon,
   DocumentPlusIcon,
@@ -11,7 +12,7 @@ import { useState, useEffect } from "react";
 const initialValues = {
   title: "",
   link: "",
-  category: null,
+  category: "",
   tags: null,
   memo: "",
 };
@@ -21,7 +22,6 @@ export const LinkForm = () => {
   const [boxMessage, setBoxMessage] = useState<null | string>(null);
 
   const onChange = (e: EventProps) => {
-    console.log("name", e.target.name, "value", e.target.value);
     setInputValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -70,7 +70,14 @@ export const LinkForm = () => {
             onChange={onChange}
           />
           {/* CATEGORY */}
-          {/* TAG */}
+          <FormOptionInput
+            name="category"
+            type="text"
+            value={values.category}
+            placeholder="add a category"
+            onChange={onChange}
+          />
+          {/* TAG - TO-DO */}
 
           <FormInput
             name="memo"

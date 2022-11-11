@@ -9,7 +9,7 @@ type InputProps = {
  type Inputs = {
     link:string
     title: string;
-    category: null | string[];
+    category:string;
     tags?: null | string[];
     memo: string;
   };

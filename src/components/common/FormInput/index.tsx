@@ -16,7 +16,7 @@ export const FormInput = ({
       <div className="flex justify-between">
         <p className="m-1 font-semibold text-gray-900 pr-1">{name}</p>
         <input
-          className="rounded shadow-sm border-gray-400 placeholder-gray-400 p-1 focus:ring-indigo-600 md:w-80"
+          className="text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1 focus:ring-indigo-600 md:w-80"
           placeholder={placeholder}
           onChange={onChange}
           type={type}
