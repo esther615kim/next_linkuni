@@ -9,4 +9,7 @@
     .btn-primary{
         @apply p-2 m-5 rounded-md shadow-lg
     }
+    .btn-inner-div{
+      @apply rounded shadow-md mx-4 py-1 px-4 flex
+    }
   }

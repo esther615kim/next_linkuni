@@ -11,7 +11,7 @@ export type UrlCardData = {
 export const COL_TAGS: string[] = ["recipe","devOps","cat","FE","React"]
 
 export const URLCARDDATA1: UrlCardData[] = [
-{id:"3",
+{id:"6",
 category:"FE",
 title:"Tailwind CSS dark mode",
 url:"https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually",
