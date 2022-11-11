@@ -8,6 +8,7 @@ export type UrlCardData = {
     tags?:string[],
 }
 
+export const COL_TAGS: string[] = ["recipe","devOps","cat","FE","React"]
 
 export const URLCARDDATA1: UrlCardData[] = [
 {id:"3",

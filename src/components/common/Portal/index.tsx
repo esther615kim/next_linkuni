@@ -15,7 +15,7 @@ const Portal = ({ children }: PortalProps) => {
   }, []);
 
   return mounted
-    ? createPortal(children, document.querySelector("#myportal"))
+    ? createPortal(children, document.querySelector("#myportal")) // as HTMLElement?
     : null;
 };
 

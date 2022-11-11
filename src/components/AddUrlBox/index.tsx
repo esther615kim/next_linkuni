@@ -1,13 +1,18 @@
+import { LinkForm } from "../LinkForm";
 import Button from "../common/Button";
+import Modal from "./../common/Modal/index";
 import Portal from "./../common/Portal/index";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 // add url button
 
 export const AddUrlBox = function () {
+  const [isOpen, setIsOpen] = useState(false);
   const handleBtnClick = () => {
-    console.log("url button clicked");
+    setIsOpen(true); //vs (prev) => true
   };
+  const onClose = () => setIsOpen(false);
 
   return (
     <div className="mb-2">
@@ -16,7 +21,9 @@ export const AddUrlBox = function () {
       </Button>
 
       <Portal>
-        <h3>hello portal</h3>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <LinkForm />
+        </Modal>
       </Portal>
     </div>
   );
