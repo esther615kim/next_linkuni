@@ -1,7 +1,8 @@
 import { EventBtnProps, EventProps, Inputs } from "../../types";
 import Button from "../common/Button";
 import { FormInput } from "../common/FormInput";
-import { FormOptionInput } from "../common/FormInput/FormOptionInput";
+import { CategoryInput } from "./CategoryInput";
+import { TagsInput } from "./TagsInput";
 import {
   PaperClipIcon,
   DocumentPlusIcon,
@@ -70,14 +71,21 @@ export const LinkForm = () => {
             onChange={onChange}
           />
           {/* CATEGORY */}
-          <FormOptionInput
+          <CategoryInput
             name="category"
             type="text"
             value={values.category}
             placeholder="add a category"
             onChange={onChange}
           />
-          {/* TAG - TO-DO */}
+          {/* TAGS - TO-DO */}
+          <TagsInput
+            name="tags"
+            type="text"
+            value={values.category}
+            placeholder="optional"
+            onChange={onChange}
+          />
 
           <FormInput
             name="memo"

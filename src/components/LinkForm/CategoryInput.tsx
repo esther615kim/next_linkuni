@@ -1,24 +1,22 @@
-import { InputProps } from "../../../types";
-import React, { useState } from "react";
+import { InputProps } from "../../types";
+import React from "react";
 
 const CATEGORIES = ["recipe", "DEV", "personal", "finance", "shorts"];
 
-export const FormOptionInput = ({
+export const CategoryInput = ({
   name,
   type,
   placeholder,
   onChange,
 }: InputProps) => {
-  //  TO-DO: add error messages
-  const [blurred, setBlurred] = useState(false);
   // ERROR MESSAGE
 
   return (
     <div className="my-4">
-      <div className="flex justify-between">
+      <div className="flex">
         <p className="m-1 font-semibold text-indigo-600 pr-1">{name}</p>
         <input
-          className="text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1 md:w-65"
+          className="text-center rounded flex-grow shadow-sm border-gray-400 placeholder-gray-400 p-1"
           placeholder={placeholder}
           onChange={onChange}
           type={type}
