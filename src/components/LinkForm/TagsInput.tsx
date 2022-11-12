@@ -7,31 +7,35 @@ export const TagsInput = ({
   type,
   placeholder,
   onChange,
+  addSelectedInput,
 }: InputProps) => {
-  //  TO-DO: add error messages
   const [tags, setTags] = useState<string[]>([]);
-  //   const inputRef = createRef();
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // not Entered
     if (e.key !== "Enter") return;
-    let tagValue = e.target.value;
+    let tagValue = e.target?.value;
     // empty input
     if (!tagValue.trim()) {
       console.info("empty value");
       return;
     }
     setTags([...tags, tagValue]);
-    console.log("tag added", tags);
-    // initialise input!!!??!
+    // TO FIX: initialise input
     tagValue = "";
+  };
+
+  const handleSelectedInput = (e: EventProps) => {
+    e.preventDefault();
+    console.log(tags);
+    // addSelectedInput(name, selected); // ....
   };
 
   const removeTag = (index: number): void => {
     setTags(tags.filter((tag, i) => i !== index));
   };
   useEffect(() => {
-    setTags((prev) => []);
+    setTags([]);
   }, []);
   return (
     <div className="my-4">
@@ -42,6 +46,7 @@ export const TagsInput = ({
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
           onChange={onChange}
+          onBlur={handleSelectedInput}
           type={type}
           name={name}
         />

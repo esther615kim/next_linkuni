@@ -3,7 +3,7 @@ type InputProps = {
     type: string;
     placeholder?: string;
     value: string;
-    addSelectedInput?:()=> void;
+    addSelectedInput?:(string,string)=>void;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 

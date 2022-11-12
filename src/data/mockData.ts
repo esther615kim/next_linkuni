@@ -10,6 +10,8 @@ export type UrlCardData = {
 
 export const COL_TAGS: string[] = ["recipe","devOps","cat","FE","React"]
 
+export const CATEGORIES = ["recipe", "DEV", "personal", "finance", "shorts"];
+
 export const URLCARDDATA1: UrlCardData[] = [
 {id:"6",
 category:"FE",

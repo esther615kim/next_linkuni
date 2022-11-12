@@ -3,11 +3,7 @@ import Button from "../common/Button";
 import { FormInput } from "../common/FormInput";
 import { CategoryInput } from "./CategoryInput";
 import { TagsInput } from "./TagsInput";
-import {
-  PaperClipIcon,
-  DocumentPlusIcon,
-  NoSymbolIcon,
-} from "@heroicons/react/24/outline";
+import { PaperClipIcon, DocumentPlusIcon } from "@heroicons/react/24/outline";
 import { useState, useEffect } from "react";
 
 const initialValues = {
@@ -61,7 +57,6 @@ export const LinkForm = () => {
         <PaperClipIcon className="text-indigo-500 m-1 w-5 h-5" />
         <h3 className="font-semibold text-lg text-slate-600">Add Link</h3>
       </div>
-
       {/* INPUTS*/}
       <form className="py-1">
         <FormInput
@@ -93,7 +88,6 @@ export const LinkForm = () => {
           placeholder="optional"
           onChange={onChange}
         />
-
         <FormInput
           name="memo"
           type="text"
