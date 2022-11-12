@@ -1,5 +1,5 @@
-import { InputProps } from "../../types";
-import React, { createRef, useState } from "react";
+import { EventProps, InputProps } from "../../types";
+import React, { createRef, KeyboardEvent, useState } from "react";
 import { useEffect } from "react";
 
 export const TagsInput = ({
@@ -12,13 +12,13 @@ export const TagsInput = ({
   const [tags, setTags] = useState<string[]>([]);
   //   const inputRef = createRef();
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // not Entered
     if (e.key !== "Enter") return;
     let tagValue = e.target.value;
     // empty input
     if (!tagValue.trim()) {
-      console.log("empty");
+      console.info("empty value");
       return;
     }
     setTags([...tags, tagValue]);
@@ -36,9 +36,9 @@ export const TagsInput = ({
   return (
     <div className="my-4">
       <div className="flex justify-between">
-        <p className="m-1 font-semibold text-gray-900 pr-1">{name}</p>
+        <p className="m-1 w-20 font-semibold text-gray-900 pr-1">{name}</p>
         <input
-          className="text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1"
+          className="flex-grow text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
           onChange={onChange}
@@ -47,7 +47,7 @@ export const TagsInput = ({
         />
       </div>
       {/* DISPLAY TAGS */}
-      <div className="flex flex-wrap justify-center w-60 mt-1">
+      <div className="flex flex-wrap justify-center ml-10 w-70 mt-1">
         {tags.map((tag, index) => (
           <span
             key={index}

@@ -38,6 +38,14 @@ export const LinkForm = () => {
     console.log("save", values);
     setBoxMessage("It has saved successfully!");
   };
+  // CATEGORY, TAG INPUTS
+  const addSelectedInput = (name: string, selected: string | string[]) => {
+    console.log("selected----", name, selected);
+    setInputValues({
+      ...values,
+      [name]: selected,
+    });
+  };
 
   const handleClearInputs = (e: EventBtnProps) => {
     e.preventDefault();
@@ -48,78 +56,74 @@ export const LinkForm = () => {
     setBoxMessage("");
   }, []);
   return (
-    <div>
-      <div className="flex flex-col items-center">
-        <div className="flex align-center justify-center ">
-          <PaperClipIcon className="text-indigo-500 m-1 w-5 h-5" />
-          <h3 className="font-semibold text-lg text-slate-600">Add Link</h3>
+    <div className="flex flex-col items-center">
+      <div className="flex align-center justify-center">
+        <PaperClipIcon className="text-indigo-500 m-1 w-5 h-5" />
+        <h3 className="font-semibold text-lg text-slate-600">Add Link</h3>
+      </div>
+
+      {/* INPUTS*/}
+      <form className="py-1">
+        <FormInput
+          name="link"
+          type="text"
+          value={values.link}
+          placeholder="add your link here"
+          onChange={onChange}
+        />
+        <FormInput
+          name="title"
+          type="text"
+          value={values.title}
+          onChange={onChange}
+        />
+        {/* CATEGORY */}
+        <CategoryInput
+          name="category"
+          type="text"
+          value={values.category}
+          placeholder="add a category"
+          addSelectedInput={addSelectedInput}
+        />
+        {/* TAGS - TO-DO */}
+        <TagsInput
+          name="tags"
+          type="text"
+          value={values.category}
+          placeholder="optional"
+          onChange={onChange}
+        />
+
+        <FormInput
+          name="memo"
+          type="text"
+          value={values.memo}
+          onChange={onChange}
+        />
+
+        {/* MESSAGE BOX */}
+        <div className="h-8 md:px-4 relative text-center">
+          {boxMessage && (
+            <h3 className="absolute top-2 left-2 text-red-400">{boxMessage}</h3>
+          )}
         </div>
 
-        {/* INPUTS*/}
-        <form className="py-1">
-          <FormInput
-            name="link"
-            type="text"
-            value={values.link}
-            placeholder="add your link here"
-            onChange={onChange}
-          />
-          <FormInput
-            name="title"
-            type="text"
-            value={values.title}
-            onChange={onChange}
-          />
-          {/* CATEGORY */}
-          <CategoryInput
-            name="category"
-            type="text"
-            value={values.category}
-            placeholder="add a category"
-            onChange={onChange}
-          />
-          {/* TAGS - TO-DO */}
-          <TagsInput
-            name="tags"
-            type="text"
-            value={values.category}
-            placeholder="optional"
-            onChange={onChange}
-          />
-
-          <FormInput
-            name="memo"
-            type="text"
-            value={values.memo}
-            onChange={onChange}
-          />
-
-          {/* MESSAGE BOX */}
-          <div className="h-8 md:px-4 relative text-center">
-            {boxMessage && (
-              <h3 className="absolute top-2 left-2 text-red-400">
-                {boxMessage}
-              </h3>
-            )}
-          </div>
-
-          {/* BUTTONS */}
-          <div className="my-6 flex justify-between">
-            <Button onClick={handleClearInputs}>
-              <div className="btn-inner-div bg-yellow-200 hover:bg-yellow-300 text-gray-800">
-                {/* <NoSymbolIcon className="m-0.5 w-5 h-5 " /> */}
-                <p className="w-14">CLEAR</p>
-              </div>
-            </Button>
-            <Button onClick={handleSaveLink}>
-              <div className="btn-inner-div text-white bg-indigo-400 hover:bg-indigo-500">
-                <DocumentPlusIcon className="m-0.5 w-5 h-5 " />
-                <p className="w-14">SAVE</p>
-              </div>
-            </Button>
-          </div>
-        </form>
-      </div>
+        {/* BUTTONS */}
+        <div className="my-6 flex justify-between">
+          <Button onClick={handleClearInputs}>
+            <div className="btn-inner-div bg-yellow-200 hover:bg-yellow-300 text-gray-800">
+              {/* <NoSymbolIcon className="m-0.5 w-5 h-5 " /> */}
+              <p className="w-14">CLEAR</p>
+            </div>
+          </Button>
+          <Button onClick={handleSaveLink}>
+            <div className="btn-inner-div text-white bg-indigo-400 hover:bg-indigo-500">
+              <DocumentPlusIcon className="m-0.5 w-5 h-5 " />
+              <p className="w-14">SAVE</p>
+            </div>
+          </Button>
+        </div>
+      </form>
     </div>
   );
 };
