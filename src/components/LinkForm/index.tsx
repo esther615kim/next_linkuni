@@ -19,6 +19,13 @@ export const LinkForm = () => {
   const [boxMessage, setBoxMessage] = useState<null | string>(null);
 
   const onChange = (e: EventProps) => {
+    console.log(
+      "event.target",
+      e.target.name,
+      e.target.value,
+      "values",
+      values
+    );
     setInputValues({
       ...values,
       [e.target.name]: e.target.value,
@@ -27,20 +34,20 @@ export const LinkForm = () => {
   const handleSaveLink = (e: EventBtnProps) => {
     e.preventDefault();
     if (values.link === "") {
-      // ADD ERROR MESSAGE
+      // TO-DO: ADD ERROR MESSAGE
       setBoxMessage("Complete the required fields."); // setBoxMessage((prev) => "Complete the required fields.");
       return;
     }
-    console.log("save", values);
-    setBoxMessage("It has saved successfully!");
+    setBoxMessage("It has been saved successfully!");
+    console.log("saved LINK data", values);
   };
   // CATEGORY, TAG INPUTS
   const addSelectedInput = (name: string, selected: string | string[]) => {
-    console.log("selected----", name, selected);
     setInputValues({
       ...values,
       [name]: selected,
     });
+    console.log("saved LINK data", values);
   };
 
   const handleClearInputs = (e: EventBtnProps) => {
@@ -64,13 +71,13 @@ export const LinkForm = () => {
           type="text"
           value={values.link}
           placeholder="add your link here"
-          onChange={onChange}
+          onBlur={onChange}
         />
         <FormInput
           name="title"
           type="text"
           value={values.title}
-          onChange={onChange}
+          onBlur={onChange}
         />
         {/* CATEGORY */}
         <CategoryInput
@@ -86,13 +93,13 @@ export const LinkForm = () => {
           type="text"
           value={values.category}
           placeholder="optional"
-          onChange={onChange}
+          addSelectedInput={addSelectedInput}
         />
         <FormInput
           name="memo"
           type="text"
           value={values.memo}
-          onChange={onChange}
+          onBlur={onChange}
         />
 
         {/* MESSAGE BOX */}

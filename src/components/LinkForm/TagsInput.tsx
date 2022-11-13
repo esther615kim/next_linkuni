@@ -6,7 +6,6 @@ export const TagsInput = ({
   name,
   type,
   placeholder,
-  onChange,
   addSelectedInput,
 }: InputProps) => {
   const [tags, setTags] = useState<string[]>([]);
@@ -14,7 +13,7 @@ export const TagsInput = ({
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // not Entered
     if (e.key !== "Enter") return;
-    let tagValue = e.target?.value;
+    const tagValue = e.target?.value;
     // empty input
     if (!tagValue.trim()) {
       console.info("empty value");
@@ -22,21 +21,16 @@ export const TagsInput = ({
     }
     setTags([...tags, tagValue]);
     // TO FIX: initialise input
-    tagValue = "";
-  };
-
-  const handleSelectedInput = (e: EventProps) => {
-    e.preventDefault();
-    console.log(tags);
-    // addSelectedInput(name, selected); // ....
   };
 
   const removeTag = (index: number): void => {
     setTags(tags.filter((tag, i) => i !== index));
   };
+
   useEffect(() => {
     setTags([]);
   }, []);
+
   return (
     <div className="my-4">
       <div className="flex justify-between">
@@ -45,8 +39,10 @@ export const TagsInput = ({
           className="flex-grow text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
-          onChange={onChange}
-          onBlur={handleSelectedInput}
+          onBlur={() => {
+            console.log(tags);
+            addSelectedInput(name, tags);
+          }}
           type={type}
           name={name}
         />
@@ -56,7 +52,6 @@ export const TagsInput = ({
         {tags.map((tag, index) => (
           <span
             key={index}
-            // onclick...
             onClick={() => {
               removeTag(index);
             }}

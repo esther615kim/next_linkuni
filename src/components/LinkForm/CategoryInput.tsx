@@ -11,15 +11,15 @@ export const CategoryInput = ({
   const [selected, setSelected] = useState("");
   const [categories, setCategories] = useState(CATEGORIES);
 
-  const handleSelectedInput = () => {
-    // TO FIX: add type guarding..?
-    addSelectedInput(name, selected);
-  };
+  // const handleSelectedInput = () => {
+  //   // TO FIX: add type guarding..?
+  //   addSelectedInput(name, selected);
+  // };
 
   const handleKeyDown = (e) => {
     // not Entered
     if (e.key !== "Enter") return;
-    let newCategory = e.target?.value;
+    const newCategory = e.target?.value;
     // empty input
     if (!newCategory.trim()) {
       console.info("empty value");
@@ -27,8 +27,6 @@ export const CategoryInput = ({
     }
     setCategories([...categories, newCategory]);
     // TO FIX: initialise input
-    console.log("category added");
-    newCategory = "";
   };
 
   return (
@@ -46,7 +44,9 @@ export const CategoryInput = ({
         name={name}
         value={selected}
         onChange={(e) => setSelected(e.target.value)}
-        onBlur={handleSelectedInput}
+        onBlur={() => {
+          addSelectedInput(name, selected);
+        }}
         className="pl-2 md:w-3/5 bg-gray-100 rounded"
       >
         {categories.map((category) => (
