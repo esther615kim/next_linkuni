@@ -40,7 +40,6 @@ export const TagsInput = ({
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
           onBlur={() => {
-            console.log(tags);
             addSelectedInput(name, tags);
           }}
           type={type}
@@ -48,9 +47,9 @@ export const TagsInput = ({
         />
       </div>
       {/* DISPLAY TAGS */}
-      <div className="flex flex-wrap justify-center ml-10 w-70 mt-1">
+      <ul className="flex flex-wrap justify-center ml-10 w-70 mt-1">
         {tags.map((tag, index) => (
-          <span
+          <li
             key={index}
             onClick={() => {
               removeTag(index);
@@ -58,9 +57,9 @@ export const TagsInput = ({
             className="mr-0.5 text-xs rounded-md border-solid border-2 m-1 px-2"
           >
             {`#${tag}`}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

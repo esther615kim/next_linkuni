@@ -1,7 +1,12 @@
 import { InputProps } from "../../../types";
 import React, { useState } from "react";
 
-export const FormInput = ({ name, type, placeholder, onBlur }: InputProps) => {
+export const FormInput = ({
+  name,
+  type,
+  placeholder,
+  onChange,
+}: InputProps) => {
   //  TO-DO: add error messages
   const [blurred, setBlurred] = useState(false);
   // ERROR MESSAGE
@@ -13,7 +18,7 @@ export const FormInput = ({ name, type, placeholder, onBlur }: InputProps) => {
         <input
           className="text-center flex-grow rounded shadow-sm border-gray-400 placeholder-gray-400 p-1 focus:ring-indigo-600 md:w-80"
           placeholder={placeholder}
-          onBlur={onBlur}
+          onChange={onChange}
           type={type}
           name={name}
         />

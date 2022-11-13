@@ -19,18 +19,14 @@ export const LinkForm = () => {
   const [boxMessage, setBoxMessage] = useState<null | string>(null);
 
   const onChange = (e: EventProps) => {
-    console.log(
-      "event.target",
-      e.target.name,
-      e.target.value,
-      "values",
-      values
-    );
     setInputValues({
       ...values,
       [e.target.name]: e.target.value,
     });
+
+    console.log("saved data after", e.target.name, values);
   };
+
   const handleSaveLink = (e: EventBtnProps) => {
     e.preventDefault();
     if (values.link === "") {
@@ -39,15 +35,16 @@ export const LinkForm = () => {
       return;
     }
     setBoxMessage("It has been saved successfully!");
-    console.log("saved LINK data", values);
+    console.log("saved FINALLY", values);
   };
+
   // CATEGORY, TAG INPUTS
   const addSelectedInput = (name: string, selected: string | string[]) => {
     setInputValues({
       ...values,
       [name]: selected,
     });
-    console.log("saved LINK data", values);
+    console.log("saved data", values);
   };
 
   const handleClearInputs = (e: EventBtnProps) => {
@@ -71,13 +68,13 @@ export const LinkForm = () => {
           type="text"
           value={values.link}
           placeholder="add your link here"
-          onBlur={onChange}
+          onChange={onChange}
         />
         <FormInput
           name="title"
           type="text"
           value={values.title}
-          onBlur={onChange}
+          onChange={onChange}
         />
         {/* CATEGORY */}
         <CategoryInput
@@ -99,7 +96,7 @@ export const LinkForm = () => {
           name="memo"
           type="text"
           value={values.memo}
-          onBlur={onChange}
+          onChange={onChange}
         />
 
         {/* MESSAGE BOX */}

@@ -11,12 +11,8 @@ export const CategoryInput = ({
   const [selected, setSelected] = useState("");
   const [categories, setCategories] = useState(CATEGORIES);
 
-  // const handleSelectedInput = () => {
-  //   // TO FIX: add type guarding..?
-  //   addSelectedInput(name, selected);
-  // };
-
   const handleKeyDown = (e) => {
+    // e.preventDefault();
     // not Entered
     if (e.key !== "Enter") return;
     const newCategory = e.target?.value;
@@ -44,7 +40,8 @@ export const CategoryInput = ({
         name={name}
         value={selected}
         onChange={(e) => setSelected(e.target.value)}
-        onBlur={() => {
+        onBlur={(e) => {
+          e.preventDefault();
           addSelectedInput(name, selected);
         }}
         className="pl-2 md:w-3/5 bg-gray-100 rounded"

@@ -4,7 +4,7 @@ type InputProps = {
     placeholder?: string;
     value: string;
     addSelectedInput?:(name:string, selected:string| string[] )=>void;
-    onBlur?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   };
 
  type Inputs = {
