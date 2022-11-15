@@ -4,43 +4,22 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTO_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  appId: process.env.FIREBSE_APP_ID
+  apiKey: "AIzaSyBHHKuSWR0i9bTv5d51FjHYl9Y_Q2K2D9c",
+  authDomain: "linkuni-4dbc8.firebaseapp.com",
+  projectId: "linkuni-4dbc8",
+  appId: "1:793681461612:web:3b5f3e334fb040391ef349"
 };
-
 
 const app = initializeApp(firebaseConfig);
 
 // AUTH
-
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 
-
-export function Glogin(){
-    signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential?.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    console.log("logged in",user)
-    //.catch(err => console.error(err)) 줄임
-  }).catch(console.error)
-
-    // Handle Errors here.
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
-    // // The email of the user's account used.
-    // const email = error.customData.email;
-    // // The AuthCredential type that was used.
-    // const credential = GoogleAuthProvider.credentialFromError(error);
-
-
+export const gLogin = async()=>{
+try{
+  const signIn = await signInWithPopup(auth,provider)
+  if(signIn) console.log(signIn.user)
+}catch(err){console.error(err)}
 }
-
