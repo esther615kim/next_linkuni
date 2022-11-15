@@ -23,8 +23,6 @@ export const LinkForm = () => {
       ...values,
       [e.target.name]: e.target.value,
     });
-
-    console.log("saved data after", e.target.name, values);
   };
 
   const handleSaveLink = (e: EventBtnProps) => {
@@ -44,7 +42,6 @@ export const LinkForm = () => {
       ...values,
       [name]: selected,
     });
-    console.log("saved data", values);
   };
 
   const handleClearInputs = (e: EventBtnProps) => {
@@ -57,23 +54,30 @@ export const LinkForm = () => {
   }, []);
   return (
     <div className="flex flex-col items-center">
-      <div className="flex align-center justify-center">
-        <PaperClipIcon className="text-indigo-500 m-1 w-5 h-5" />
-        <h3 className="font-semibold text-lg text-slate-600">Add Link</h3>
+      <div className="flex justify-center align-center">
+        <PaperClipIcon className="w-5 h-5 m-1 text-indigo-500" />
+        <h3 className="text-lg font-semibold text-slate-600">Add Link</h3>
       </div>
       {/* INPUTS*/}
-      <form className="py-1">
+      <div
+        // onSubmit={(e) => {
+        //   e.preventDefault();
+        // }}
+        // method="get"
+        className="py-1"
+      >
         <FormInput
           name="link"
           type="text"
           value={values.link}
-          placeholder="add your link here"
+          placeholder="required"
           onChange={onChange}
         />
         <FormInput
           name="title"
           type="text"
           value={values.title}
+          placeholder="required"
           onChange={onChange}
         />
         {/* CATEGORY */}
@@ -100,28 +104,28 @@ export const LinkForm = () => {
         />
 
         {/* MESSAGE BOX */}
-        <div className="h-8 md:px-4 relative text-center">
+        <div className="relative h-8 text-center md:px-4">
           {boxMessage && (
-            <h3 className="absolute top-2 left-2 text-red-400">{boxMessage}</h3>
+            <h3 className="absolute text-red-400 top-2 left-2">{boxMessage}</h3>
           )}
         </div>
 
         {/* BUTTONS */}
-        <div className="my-6 flex justify-between">
+        <div className="flex justify-between my-6">
           <Button onClick={handleClearInputs}>
-            <div className="btn-inner-div bg-yellow-200 hover:bg-yellow-300 text-gray-800">
+            <div className="text-gray-800 bg-yellow-200 btn-inner-div hover:bg-yellow-300">
               {/* <NoSymbolIcon className="m-0.5 w-5 h-5 " /> */}
               <p className="w-14">CLEAR</p>
             </div>
           </Button>
           <Button onClick={handleSaveLink}>
-            <div className="btn-inner-div text-white bg-indigo-400 hover:bg-indigo-500">
+            <div className="text-white bg-indigo-400 btn-inner-div hover:bg-indigo-500">
               <DocumentPlusIcon className="m-0.5 w-5 h-5 " />
               <p className="w-14">SAVE</p>
             </div>
           </Button>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

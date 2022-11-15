@@ -19,11 +19,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Setting` for adding/changing the general settings
 
 ---
+
+### [0.0.5] - 15/Nov/2022
+
+## `Fixed`
+
+- disable Enter submit in LinkForm
+
+## `Setting`
+
+- puppeteer for web scraping
+
 ### [0.0.4] - 12/Nov/2022
 
 ## `Setting`
+
 - puppeteer for web scraping
-https://github.com/puppeteer/puppeteer
 
 ### [0.0.3] - 12/Nov/2022
 
@@ -42,7 +53,6 @@ https://github.com/puppeteer/puppeteer
 -Tailwind CSS
 -add heroicons
 
-
 ## `Added`
 
 - AddUrlBox component
@@ -57,4 +67,8 @@ https://github.com/puppeteer/puppeteer
 ## `Installed`
 
 -
--
+- ***
+
+  References
+
+1. puppeteer https://github.com/puppeteer/puppeteer

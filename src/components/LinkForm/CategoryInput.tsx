@@ -1,6 +1,14 @@
 import { CATEGORIES } from "../../data/mockData";
-import { EventProps, InputProps } from "../../types";
-import React, { useState } from "react";
+import { EventProps } from "../../types";
+import React, { KeyboardEvent, useState } from "react";
+
+type InputProps = {
+  name: string;
+  type: string;
+  placeholder?: string;
+  value: string;
+  addSelectedInput?: (name: string, selected: string) => void;
+};
 
 export const CategoryInput = ({
   name,
@@ -11,23 +19,26 @@ export const CategoryInput = ({
   const [selected, setSelected] = useState("");
   const [categories, setCategories] = useState(CATEGORIES);
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     // e.preventDefault();
+
     // not Entered
     if (e.key !== "Enter") return;
-    const newCategory = e.target?.value;
+    const categoryElement = e.target as HTMLInputElement;
+    const newCategory = categoryElement.value;
     // empty input
     if (!newCategory.trim()) {
       console.info("empty value");
       return;
     }
     setCategories([...categories, newCategory]);
-    // TO FIX: initialise input
+    // nitialise input
+    setSelected("");
   };
 
   return (
     <div className="flex my-4">
-      <p className="m-1 w-20 font-semibold text-indigo-400 pr-1">{name}</p>
+      <p className="w-20 pr-1 m-1 font-semibold text-indigo-400">{name}</p>
       <input
         className="text-center rounded w-30 shadow-sm border-gray-400 placeholder-gray-400 py-1 px-0.5 mr-1"
         onKeyDown={handleKeyDown}
@@ -42,9 +53,9 @@ export const CategoryInput = ({
         onChange={(e) => setSelected(e.target.value)}
         onBlur={(e) => {
           e.preventDefault();
-          addSelectedInput(name, selected);
+          addSelectedInput?.(name, selected);
         }}
-        className="pl-2 md:w-3/5 bg-gray-100 rounded"
+        className="pl-2 bg-gray-100 rounded md:w-3/5"
       >
         {categories.map((category) => (
           <option key={category}>{category}</option>

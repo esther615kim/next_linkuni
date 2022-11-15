@@ -1,5 +1,5 @@
 import { EventProps, InputProps } from "../../types";
-import React, { createRef, KeyboardEvent, useState } from "react";
+import React, { createRef, KeyboardEvent, useRef, useState } from "react";
 import { useEffect } from "react";
 
 export const TagsInput = ({
@@ -9,18 +9,21 @@ export const TagsInput = ({
   addSelectedInput,
 }: InputProps) => {
   const [tags, setTags] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    const tagElement = e.target as HTMLInputElement;
+    const tagValue = tagElement.value;
     // not Entered
     if (e.key !== "Enter") return;
-    const tagValue = e.target?.value;
     // empty input
     if (!tagValue.trim()) {
       console.info("empty value");
       return;
     }
     setTags([...tags, tagValue]);
-    // TO FIX: initialise input
+    // initialise input
+    setInputValue("");
   };
 
   const removeTag = (index: number): void => {
@@ -34,20 +37,22 @@ export const TagsInput = ({
   return (
     <div className="my-4">
       <div className="flex justify-between">
-        <p className="m-1 w-20 font-semibold text-gray-900 pr-1">{name}</p>
+        <p className="w-20 pr-1 m-1 font-semibold text-gray-900">{name}</p>
         <input
-          className="flex-grow text-center rounded shadow-sm border-gray-400 placeholder-gray-400 p-1"
+          className="flex-grow p-1 text-center placeholder-gray-400 border-gray-400 rounded shadow-sm"
           placeholder={placeholder}
           onKeyDown={handleKeyDown}
+          onChange={(e) => setInputValue((prev) => e.target.value)}
+          value={inputValue}
           onBlur={() => {
-            addSelectedInput(name, tags);
+            addSelectedInput?.(name, tags);
           }}
           type={type}
           name={name}
         />
       </div>
       {/* DISPLAY TAGS */}
-      <ul className="flex flex-wrap justify-center ml-10 w-70 mt-1">
+      <ul className="flex flex-wrap justify-center mt-1 ml-10 w-70">
         {tags.map((tag, index) => (
           <li
             key={index}
