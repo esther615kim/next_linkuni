@@ -1,5 +1,6 @@
+import { useAuth } from "../../context/Auth";
+import { googleLogin, googleLogout } from "../../firebase/firebase.admin";
 import Button from "../common/Button";
-import { gLogin } from "./../../firebase/firebase.admin";
 import { HeartIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Head from "next/head";
 import { useState } from "react";
@@ -14,19 +15,10 @@ export const Layout = function ({
   children,
 }: //   ...styleProps
 Props) {
-  // add context- useAuth signOut, loading, user,signInWithGoogle => onClick
-
-  // to-do - move to useAuth
-  const [user, setUser] = useState(null);
-
-  const handleLogin = () => {
-    console.log("login");
-    gLogin();
-  };
-
+  // const { user } = useAuth;
   // use Button component
   const logInBtn = (
-    <Button onClick={handleLogin}>
+    <Button onClick={googleLogin}>
       <div className="flex mr-1 md:mr-2">
         <h3 className="mr-2">Login</h3>
         <UserCircleIcon className="w-6 h-6 text-white" />
@@ -34,7 +26,7 @@ Props) {
     </Button>
   );
   const logOutBtn = (
-    <Button onClick={() => console.log("logout!")}>
+    <Button onClick={googleLogout}>
       <div className="flex mr-1 md:mr-2">
         <h3 className="mr-2">Logout</h3>
         <UserCircleIcon className="w-6 h-6 text-white" />
