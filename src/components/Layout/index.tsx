@@ -10,15 +10,21 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Layout = function ({
-  title = "Linkuni",
-  children,
-}: //   ...styleProps
-Props) {
+export const Layout = function ({ title = "Linkuni", children }: Props) {
+  const [user, setUser] = useState(false);
   // const { user } = useAuth;
-  // use Button component
+
+  const handleClickLogin = () => {
+    googleLogin();
+    setUser(true);
+  };
+  const handleClickLogOut = () => {
+    googleLogout();
+    setUser(false);
+  };
+
   const logInBtn = (
-    <Button onClick={googleLogin}>
+    <Button onClick={handleClickLogin}>
       <div className="flex mr-1 md:mr-2">
         <h3 className="mr-2">Login</h3>
         <UserCircleIcon className="w-6 h-6 text-white" />
@@ -26,7 +32,7 @@ Props) {
     </Button>
   );
   const logOutBtn = (
-    <Button onClick={googleLogout}>
+    <Button onClick={handleClickLogOut}>
       <div className="flex mr-1 md:mr-2">
         <h3 className="mr-2">Logout</h3>
         <UserCircleIcon className="w-6 h-6 text-white" />

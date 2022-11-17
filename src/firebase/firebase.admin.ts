@@ -20,7 +20,9 @@ const provider = new GoogleAuthProvider();
 export const googleLogin = async()=>{
 try{
   const signIn = await signInWithPopup(auth,provider)
-  if(signIn) console.log(signIn.user.displayName)
+  if(signIn) {
+    console.log(signIn.user.displayName, signIn.user)
+  }
         // get data
       // change user status true,name,uid
 }catch(err){console.error(err)}
