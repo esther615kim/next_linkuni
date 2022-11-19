@@ -3,9 +3,9 @@
 // INITIALISE
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { doc, Firestore, getDoc, setDoc, collection, getDocs } from 'firebase/firestore';
-import { getFirestore } from "firebase/firestore"; 
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { doc, Firestore, getDoc, setDoc, collection, getDocs,collectionGroup } from 'firebase/firestore';
+import { useDocumentData, useCollectionData, useCollection } from 'react-firebase-hooks/firestore';
+import { getFirestore, query, where, orderBy } from 'firebase/firestore';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBHHKuSWR0i9bTv5d51FjHYl9Y_Q2K2D9c",
@@ -48,6 +48,32 @@ type Props={
   tags:string[]
   description:string
 }
+// apis
+
+
+const colRef = collection(db, "links");
+
+// default: time-descending order
+export const getCategories = async()=> {
+  try{
+    return getDocs(colRef).then((snapshot)=>{(snapshot?.docs[0].data().name)
+      // const allLinks:any =[]
+      // snapshot.docs.forEach((doc)=>{
+      //   allLinks.push({...doc.data(),id:doc.id})
+      // })
+     
+    })}catch(err){console.error(err)}
+
+}
+
+export const getLinksByCategory = async(category:string)=>{
+  console.log(category,"category")
+  try{
+     doc(db,"links","categories",category)
+  }catch(err){console.error(err)}
+
+}
+
 export const addNewLink = async(obj:Props)=>{
   try{
     // await setDoc(doc(db, "cities", "LA"), {
@@ -67,16 +93,7 @@ export const updateALink = async()=>{
   }catch(err){console.error(err)}
 }
 
-// default: time-descending order
-export const getAllLinks = async()=>{
-  
-  try{
 
-    // const colRef = collection(db,"links")
-    // const fetchData = getDocs(colRef).then((snapshot)=>console.log(snapshot.docs))
-
-  }catch(err){console.error(err)}
-}
 
 
 export const deleteALink = async()=>{

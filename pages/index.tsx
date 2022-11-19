@@ -1,27 +1,35 @@
 import { AddUrlBox } from "../src/components/AddUrlBox";
 import { Layout } from "../src/components/Layout";
 import { UrlCards } from "../src/components/UrlCards";
-import { db } from "../src/firebase/firebase.admin";
+import {
+  db,
+  getCategories,
+  getLinksByCategory,
+} from "../src/firebase/firebase.admin";
 import { collection } from "firebase/firestore";
 // add it to firebase & apis
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 const Home: NextPage = () => {
   const URLCARDDATA1: string[] = [];
-  const colRef = collection(db, "links");
-  const [docs, loading, error] = useCollectionData(colRef);
+
   const [categories, setCategories] = useState<string[] | null>(null);
 
-  // categories
   useEffect(() => {
-    if (docs) {
-      console.log("categories", docs[0]?.name);
-      setCategories(docs[0]?.name);
-    }
+    // get categories
+    getCategories().then(
+      (result) => {
+        console.log("categories---!", result);
+        // result && setCategories(result?._key.path.segments);
+        // return result?._key.path.segments;
+      }
+      // getLinksbyCategory
+    );
+    // .then((result) => getLinksByCategory(result[0]))
+    // .then((result) => console.log("result", result[0]));
   }, []);
 
   return (
@@ -31,12 +39,12 @@ const Home: NextPage = () => {
         Search box
       </div>
       {/* CATEGORY */}
-      <div className="absolute left-0 my-5 w-2/5 rounded-r-lg md:w-1/5 h-screen drop-shadow-lg bg-yellow-200 px-2 py-5">
+      <div className="absolute left-0 my-5 w-min-50 rounded-r-lg md:w-1/5 h-fit drop-shadow-lg bg-yellow-200 px-2 py-5">
         <ul>
           {categories &&
             categories.map((li, i) => (
               <li className="pl-2" key={i}>
-                {li}
+                <a> {li}</a>
               </li>
             ))}
         </ul>

@@ -18,7 +18,6 @@ export const UrlCards = function ({ cardsData }: Props) {
 
   useEffect(() => {
     //fetch data from firebase
-    getAllLinks();
   }, []);
 
   return (
