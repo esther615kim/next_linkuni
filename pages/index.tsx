@@ -3,8 +3,9 @@ import { Layout } from "../src/components/Layout";
 import { UrlCards } from "../src/components/UrlCards";
 import {
   db,
+  getAllCategoryData,
   getCategories,
-  getLinksByCategory,
+  getSingCategoryData,
 } from "../src/firebase/firebase.admin";
 import { collection } from "firebase/firestore";
 // add it to firebase & apis
@@ -20,17 +21,12 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     // get categories
-    getCategories().then(
-      (result) => {
-        console.log("categories---!", result);
-        // result && setCategories(result?._key.path.segments);
-        // return result?._key.path.segments;
-      }
-      // getLinksbyCategory
-    );
-    // .then((result) => getLinksByCategory(result[0]))
-    // .then((result) => console.log("result", result[0]));
+    getCategories().then((result) => {
+      setCategories(result);
+      getAllCategoryData(result);
+    });
   }, []);
+  // console.log(categories, "fetched");
 
   return (
     <Layout>

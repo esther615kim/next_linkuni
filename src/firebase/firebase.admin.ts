@@ -56,22 +56,44 @@ const colRef = collection(db, "links");
 // default: time-descending order
 export const getCategories = async()=> {
   try{
-    return getDocs(colRef).then((snapshot)=>{(snapshot?.docs[0].data().name)
+    return getDocs(colRef).then((snapshot)=>(snapshot?.docs[0].data().name)
       // const allLinks:any =[]
       // snapshot.docs.forEach((doc)=>{
       //   allLinks.push({...doc.data(),id:doc.id})
       // })
      
-    })}catch(err){console.error(err)}
-
+    )}catch(err){console.error(err)}
+}
+type Links={
+  title:string,
+  url:string,
+  id:string
+}[]
+export const getSingCategoryData = async(category:string)=>{
+  try{
+    const categoryLinks:Links =[];
+    const fetchCategoryData = await getDocs(collectionGroup(db,category)).then((result) => 
+    {
+      result.docs.forEach(link =>{
+        // add obj: title,url,id
+        categoryLinks.push({...link.data(),id:link.id})
+      })
+      console.log("links for",category,categoryLinks)
+      return categoryLinks // NOT WORKING WHY
+    })
+    }catch(err){console.error(err)}
 }
 
-export const getLinksByCategory = async(category:string)=>{
-  console.log(category,"category")
-  try{
-     doc(db,"links","categories",category)
-  }catch(err){console.error(err)}
+export const getAllCategoryData = (categories:string[])=>{
+  const ALLCATEGORYDATA= {}
 
+  categories.forEach((category)=>{
+    getSingCategoryData(category)
+    // save key,value pair in ALLCATEGORYDATA
+    ALLCATEGORYDATA[category]= ""
+  })
+  console.log("ALL---",ALLCATEGORYDATA)
+  // return ALLCATEGORYDATA
 }
 
 export const addNewLink = async(obj:Props)=>{
