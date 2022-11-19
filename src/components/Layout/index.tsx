@@ -48,7 +48,8 @@ export const Layout = function ({ title = "Linkuni", children }: Props) {
 
   return (
     <div
-    //   {...styleProps}
+      className="relative"
+      //   {...styleProps}
     >
       <Head>{title}</Head>
       {/* TOP NAV */}
