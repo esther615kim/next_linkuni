@@ -1943,7 +1943,7 @@
     "locate-path" "^6.0.0"
     "path-exists" "^4.0.0"
 
-"firebase@^9.14.0":
+"firebase@^9.14.0", "firebase@>= 9.0.0":
   "integrity" "sha512-wePrsf7W33mhT7RVXQavragoAgXb/NDm22vuhwJXkprrQ2Y9alrEKC5LTAtLJL3P2dHdDmeylS6PLZwWPEE79A=="
   "resolved" "https://registry.npmjs.org/firebase/-/firebase-9.14.0.tgz"
   "version" "9.14.0"
@@ -2993,12 +2993,17 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
+"react-firebase-hooks@^5.1.1":
+  "integrity" "sha512-y2UpWs82xs+39q5Rc/wq316ca52QsC0n8m801V+yM4IC4hbfOL4yQPVSh7w+ydstdvjN9F+lvs1WrO2VYxpmdA=="
+  "resolved" "https://registry.npmjs.org/react-firebase-hooks/-/react-firebase-hooks-5.1.1.tgz"
+  "version" "5.1.1"
+
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@18.2.0":
+"react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.2 || ^18.0.0-0", "react@^18.2.0", "react@>= 16", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"
@@ -3471,6 +3476,11 @@
   "integrity" "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
   "resolved" "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
   "version" "1.0.2"
+
+"uuid@^9.0.0":
+  "integrity" "sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg=="
+  "resolved" "https://registry.npmjs.org/uuid/-/uuid-9.0.0.tgz"
+  "version" "9.0.0"
 
 "webidl-conversions@^3.0.0":
   "integrity" "sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ=="

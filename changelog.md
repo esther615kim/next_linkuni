@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+### [0.0.6] - 17/Nov/2022
+
+## `Setting`
+
+- react-firebase-hooks
+
 ### [0.0.5] - 15/Nov/2022
 
 ## `Fixed`
@@ -72,3 +78,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   References
 
 1. puppeteer https://github.com/puppeteer/puppeteer
+2. react-firebase-hooks https://github.com/CSFrequency/react-firebase-hooks/blob/master/firestore/README.md#usecollectiondata

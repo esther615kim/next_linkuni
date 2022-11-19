@@ -3,6 +3,9 @@
 // INITIALISE
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { doc, Firestore, getDoc, setDoc, collection, getDocs } from 'firebase/firestore';
+import { getFirestore } from "firebase/firestore"; 
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBHHKuSWR0i9bTv5d51FjHYl9Y_Q2K2D9c",
@@ -12,6 +15,7 @@ export const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
+export const db = getFirestore()
 
 // AUTH
 const auth = getAuth();
@@ -36,3 +40,48 @@ export const googleLogout = async()=>{
     })
   }catch(err){console.error(err)}
 }
+
+type Props={
+  title:string
+  category:string
+  id:string
+  tags:string[]
+  description:string
+}
+export const addNewLink = async(obj:Props)=>{
+  try{
+    // await setDoc(doc(db, "cities", "LA"), {
+      await setDoc(doc(db, obj.category, obj.id), {
+      title:obj.title,
+      id:obj.id,
+      tags:obj.tags,
+      description:obj.description
+    });
+
+  }catch(err){console.error(err)}
+}
+
+export const updateALink = async()=>{
+  try{
+
+  }catch(err){console.error(err)}
+}
+
+// default: time-descending order
+export const getAllLinks = async()=>{
+  
+  try{
+
+    // const colRef = collection(db,"links")
+    // const fetchData = getDocs(colRef).then((snapshot)=>console.log(snapshot.docs))
+
+  }catch(err){console.error(err)}
+}
+
+
+export const deleteALink = async()=>{
+  try{
+
+  }catch(err){console.error(err)}
+}
+
