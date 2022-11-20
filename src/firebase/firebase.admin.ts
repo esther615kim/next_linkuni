@@ -27,8 +27,6 @@ try{
   if(signIn) {
     console.log(signIn.user.displayName, signIn.user)
   }
-        // get data
-      // change user status true,name,uid
 }catch(err){console.error(err)}
 }
 
@@ -49,8 +47,6 @@ type Props={
   description:string
 }
 // apis
-
-
 const colRef = collection(db, "links");
 
 // default: time-descending order
@@ -84,12 +80,14 @@ export const getSingCategoryData = async(category:string)=>{
     }catch(err){console.error(err)}
 }
 type AllCategoryData = any //FIX IT
+
 export const getAllCategoryData = async(categories:string[])=>{
+
   const ALLCATEGORYDATA:AllCategoryData= []
 
   categories.map(async(category) =>{
     const mapResult = await getSingCategoryData(category)
-    const addData = ALLCATEGORYDATA.push({category:mapResult}) ; // FIX HERE category..
+    const addData = ALLCATEGORYDATA.push(mapResult) ; // FIX HERE to add category as key..
   } 
   )
   return ALLCATEGORYDATA;
@@ -98,7 +96,7 @@ export const getAllCategoryData = async(categories:string[])=>{
 export const addNewLink = async(obj:Props)=>{
   try{
     // await setDoc(doc(db, "cities", "LA"), {
-      await setDoc(doc(db, obj.category, obj.id), {
+      await setDoc(doc(db, obj.category), {
       title:obj.title,
       id:obj.id,
       tags:obj.tags,
@@ -113,8 +111,6 @@ export const updateALink = async()=>{
 
   }catch(err){console.error(err)}
 }
-
-
 
 
 export const deleteALink = async()=>{

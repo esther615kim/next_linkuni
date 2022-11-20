@@ -1,6 +1,6 @@
 export type UrlCardData = {
     id:string,
-    category:string,
+    category?:string,
     title:string,
     description?:string
     url:string,

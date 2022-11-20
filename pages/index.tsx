@@ -30,12 +30,17 @@ const Home: NextPage = () => {
         console.error(err);
       } finally {
         setLoading(false);
+        console.log(
+          "loaded",
+          loading,
+          allUrls?.length,
+          allUrls?.[0][0],
+          "finally"
+        );
       }
     };
     fetchAllCategoryData();
   }, [loading]);
-
-  console.log("loaded", allUrls, categories);
 
   return (
     <Layout>
@@ -47,9 +52,15 @@ const Home: NextPage = () => {
       <SideBar categories={categories} />
       {/* ADD BUTTON */}
       <AddUrlBox />
-      {/* URL CARDS */}
-      <div className="bg-red-200 w-full h-screen">
-        {loading ? <p>...loading</p> : <div>{categories?.[0]}</div>}
+      {/* URL CARDS - 사.라.짐.*/}
+      <div className="w-full h-screen bg-gray-200">
+        {allUrls ? (
+          allUrls?.map((categoryData, index) => (
+            <UrlCards key={index} cardsdata={categoryData} />
+          ))
+        ) : (
+          <p>...loading</p>
+        )}
       </div>
     </Layout>
   );

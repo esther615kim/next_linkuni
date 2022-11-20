@@ -1,5 +1,14 @@
 import { NextPage } from "next";
+
 // TO-DO: how to use getStaticPaths or getStaticProps here
+// export const getServerSideProps = (context) => {
+//   console.log(context.query);
+//   return {
+//     props: {
+//       title: context.query.title, //pass it to the page props
+//     },
+//   };
+// };
 
 const categoryPage: NextPage = function () {
   return (
