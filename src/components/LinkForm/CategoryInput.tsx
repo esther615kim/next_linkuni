@@ -45,8 +45,6 @@ export const CategoryInput = ({
         placeholder={placeholder}
         type={type}
       />
-
-      {/* DISPLAY OPTIONS */}
       <select
         name={name}
         value={selected}

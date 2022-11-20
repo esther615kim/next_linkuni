@@ -10,7 +10,7 @@ type ModalProps = {
 
 const Modal = ({ children, isOpen, onClose }: ModalProps) => {
   if (!isOpen) return null;
-  // background
+
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 bg-slate-800/50">
       <div className="fixed top-1/2 lg:w-2/5 md:w-3/5 rounded-md z-10 left-1/2 p-2 -translate-y-1/2 -translate-x-1/2 bg-white shadow-md ">

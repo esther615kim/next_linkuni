@@ -46,7 +46,7 @@ type Props={
   tags:string[]
   description:string
 }
-// apis
+// APIS
 const colRef = collection(db, "links");
 
 // default: time-descending order
