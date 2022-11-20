@@ -14,19 +14,31 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
+type AllUrls = any; // FIX TYPE
+
 const Home: NextPage = () => {
   const URLCARDDATA1: string[] = [];
 
   const [categories, setCategories] = useState<string[] | null>(null);
+  const [allUrls, setAllUrls] = useState<AllUrls>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // get categories
-    getCategories().then((result) => {
-      setCategories(result);
-      getAllCategoryData(result);
-    });
+    const fetchAllCategoryData = async () => {
+      try {
+        const result = await getCategories();
+        setCategories(result);
+        const result2 = await getAllCategoryData(result);
+        setAllUrls(result2);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchAllCategoryData();
   }, []);
-  // console.log(categories, "fetched");
+  console.log(categories, allUrls, "fetched");
 
   return (
     <Layout>

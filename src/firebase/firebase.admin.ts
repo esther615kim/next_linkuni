@@ -72,28 +72,27 @@ type Links={
 export const getSingCategoryData = async(category:string)=>{
   try{
     const categoryLinks:Links =[];
-    const fetchCategoryData = await getDocs(collectionGroup(db,category)).then((result) => 
-    {
-      result.docs.forEach(link =>{
+    const fetchCategoryData = await getDocs(collectionGroup(db,category));
+
+    const result = fetchCategoryData.docs.forEach(link =>{
         // add obj: title,url,id
         categoryLinks.push({...link.data(),id:link.id})
       })
-      console.log("links for",category,categoryLinks)
       return categoryLinks // NOT WORKING WHY
-    })
+  
     }catch(err){console.error(err)}
 }
 
-export const getAllCategoryData = (categories:string[])=>{
+export const getAllCategoryData = async(categories:string[])=>{
   const ALLCATEGORYDATA= {}
-
-  categories.forEach((category)=>{
-    getSingCategoryData(category)
-    // save key,value pair in ALLCATEGORYDATA
-    ALLCATEGORYDATA[category]= ""
-  })
-  console.log("ALL---",ALLCATEGORYDATA)
-  // return ALLCATEGORYDATA
+  
+  categories.map(async(category) =>{
+    const mapResult = await getSingCategoryData(category)
+    const addData = ALLCATEGORYDATA[category] = mapResult;
+  } 
+  )
+  // console.log("FINALLY",ALLCATEGORYDATA)
+  return ALLCATEGORYDATA;
 }
 
 export const addNewLink = async(obj:Props)=>{
