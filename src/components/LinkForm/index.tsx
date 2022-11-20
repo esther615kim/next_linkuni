@@ -52,6 +52,7 @@ export const LinkForm = () => {
   useEffect(() => {
     setBoxMessage("");
   }, []);
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex justify-center align-center">
@@ -80,7 +81,6 @@ export const LinkForm = () => {
           placeholder="required"
           onChange={onChange}
         />
-        {/* CATEGORY */}
         <CategoryInput
           name="category"
           type="text"
@@ -88,7 +88,6 @@ export const LinkForm = () => {
           placeholder="add a category"
           addSelectedInput={addSelectedInput}
         />
-        {/* TAGS - TO-DO */}
         <TagsInput
           name="tags"
           type="text"
@@ -114,7 +113,6 @@ export const LinkForm = () => {
         <div className="flex justify-between my-6">
           <Button onClick={handleClearInputs}>
             <div className="text-gray-800 bg-yellow-200 btn-inner-div hover:bg-yellow-300">
-              {/* <NoSymbolIcon className="m-0.5 w-5 h-5 " /> */}
               <p className="w-14">CLEAR</p>
             </div>
           </Button>

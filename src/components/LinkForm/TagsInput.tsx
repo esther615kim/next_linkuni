@@ -14,15 +14,14 @@ export const TagsInput = ({
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     const tagElement = e.target as HTMLInputElement;
     const tagValue = tagElement.value;
-    // not Entered
+
     if (e.key !== "Enter") return;
-    // empty input
+
     if (!tagValue.trim()) {
       console.info("empty value");
       return;
     }
     setTags([...tags, tagValue]);
-    // initialise input
     setInputValue("");
   };
 

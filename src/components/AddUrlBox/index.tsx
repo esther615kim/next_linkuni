@@ -5,13 +5,12 @@ import Portal from "./../common/Portal/index";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 
-// add url button
-
 export const AddUrlBox = function () {
   const [isOpen, setIsOpen] = useState(false);
   const handleBtnClick = () => {
     setIsOpen(true); //vs (prev) => true
   };
+
   const onClose = () => setIsOpen(false);
 
   return (

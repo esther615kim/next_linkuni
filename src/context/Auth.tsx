@@ -10,6 +10,7 @@ type AuthUser = {
   displayName: string | null;
   photoURL: string | null;
 };
+
 type UserAuthContextProps = {
   user: AuthUser | null;
   loading: boolean;

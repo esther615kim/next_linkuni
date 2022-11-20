@@ -6,7 +6,6 @@ import {
   getAllCategoryData,
   getCategories,
 } from "../src/firebase/firebase.admin";
-// add it to firebase & apis
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -48,9 +47,7 @@ const Home: NextPage = () => {
       <div className="w-4/5 p-10 m-5 text-center rounded-md text-slate-900">
         Search box
       </div>
-      {/* CATEGORY */}
       <SideBar categories={categories} />
-      {/* ADD BUTTON */}
       <AddUrlBox />
       {/* URL CARDS - 사.라.짐.*/}
       <div className="w-full h-screen bg-gray-200">
