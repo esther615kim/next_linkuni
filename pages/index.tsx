@@ -1,13 +1,11 @@
 import { AddUrlBox } from "../src/components/AddUrlBox";
 import { Layout } from "../src/components/Layout";
+import { SideBar } from "../src/components/SideBar";
 import { UrlCards } from "../src/components/UrlCards";
 import {
-  db,
   getAllCategoryData,
   getCategories,
-  getSingCategoryData,
 } from "../src/firebase/firebase.admin";
-import { collection } from "firebase/firestore";
 // add it to firebase & apis
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -17,8 +15,6 @@ import { useState, useEffect } from "react";
 type AllUrls = any; // FIX TYPE
 
 const Home: NextPage = () => {
-  const URLCARDDATA1: string[] = [];
-
   const [categories, setCategories] = useState<string[] | null>(null);
   const [allUrls, setAllUrls] = useState<AllUrls>(null);
   const [loading, setLoading] = useState(true);
@@ -37,8 +33,9 @@ const Home: NextPage = () => {
       }
     };
     fetchAllCategoryData();
-  }, []);
-  console.log(categories, allUrls, "fetched");
+  }, [loading]);
+
+  console.log("loaded", allUrls, categories);
 
   return (
     <Layout>
@@ -47,22 +44,12 @@ const Home: NextPage = () => {
         Search box
       </div>
       {/* CATEGORY */}
-      <div className="absolute left-0 my-5 w-min-50 rounded-r-lg md:w-1/5 h-fit drop-shadow-lg bg-yellow-200 px-2 py-5">
-        <ul>
-          {categories &&
-            categories.map((li, i) => (
-              <li className="pl-2" key={i}>
-                <a> {li}</a>
-              </li>
-            ))}
-        </ul>
-      </div>
-
+      <SideBar categories={categories} />
       {/* ADD BUTTON */}
       <AddUrlBox />
       {/* URL CARDS */}
       <div className="bg-red-200 w-full h-screen">
-        <UrlCards cardsData={URLCARDDATA1} />
+        {loading ? <p>...loading</p> : <div>{categories?.[0]}</div>}
       </div>
     </Layout>
   );

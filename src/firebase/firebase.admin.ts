@@ -69,6 +69,7 @@ type Links={
   url:string,
   id:string
 }[]
+
 export const getSingCategoryData = async(category:string)=>{
   try{
     const categoryLinks:Links =[];
@@ -82,16 +83,15 @@ export const getSingCategoryData = async(category:string)=>{
   
     }catch(err){console.error(err)}
 }
-
+type AllCategoryData = any //FIX IT
 export const getAllCategoryData = async(categories:string[])=>{
-  const ALLCATEGORYDATA= {}
-  
+  const ALLCATEGORYDATA:AllCategoryData= []
+
   categories.map(async(category) =>{
     const mapResult = await getSingCategoryData(category)
-    const addData = ALLCATEGORYDATA[category] = mapResult;
+    const addData = ALLCATEGORYDATA.push({category:mapResult}) ; // FIX HERE category..
   } 
   )
-  // console.log("FINALLY",ALLCATEGORYDATA)
   return ALLCATEGORYDATA;
 }
 

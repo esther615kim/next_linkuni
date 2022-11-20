@@ -1,5 +1,5 @@
 import { UrlCardData } from "../../data/mockData";
-import { db, getAllLinks } from "../../firebase/firebase.admin";
+import { db } from "../../firebase/firebase.admin";
 import { startScraping } from "../../utils/index";
 import SingleCard from "./SingleCard";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
@@ -12,22 +12,22 @@ type Props = {
 };
 
 export const UrlCards = function ({ cardsData }: Props) {
-  // const [loading, setLoading] = useState(true);
-  const [urlData, setUrlData] = useState<string[] | null>(null);
+  const [urlData, seturlData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //fetch data from firebase
+    console.log("let's make cards", cardsData);
   }, []);
 
   return (
     // map div per category
     <div className="w-full p-5">
       <h3 className="pl-2 text-lg font-bold align-left">
+        Category name
         {cardsData[0]?.category.toUpperCase()}
       </h3>
       {/* CARD */}
-      <ul className="flex overflow-x-scroll md:overflow-x-hidden flex-nowrap">
+      {/* <ul className="flex overflow-x-scroll md:overflow-x-hidden flex-nowrap">
         {cardsData.length ? (
           cardsData.map((card) => <SingleCard key={card.id} cardData={card} />)
         ) : (
@@ -35,7 +35,7 @@ export const UrlCards = function ({ cardsData }: Props) {
             You have not saved any links yet.
           </p>
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 };
