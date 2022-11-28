@@ -8,11 +8,11 @@ import { useDocumentData, useCollectionData, useCollection } from 'react-firebas
 import { getFirestore, query, where, orderBy } from 'firebase/firestore';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyBHHKuSWR0i9bTv5d51FjHYl9Y_Q2K2D9c",
-  authDomain: "linkuni-4dbc8.firebaseapp.com",
-  projectId: "linkuni-4dbc8",
-  appId: "1:793681461612:web:3b5f3e334fb040391ef349"
-};
+  apiKey: process.env.FIREBASE_API_KEY
+  authDomain: process.env.FIREBASE_AUTO_DOMAIN
+  projectId: process.env.FIREBASE_PROJECT_ID
+  appId: process.env.FIREBSE_APP_ID
+}
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore()
